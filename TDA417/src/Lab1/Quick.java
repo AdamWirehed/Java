@@ -25,13 +25,22 @@ public class Quick {
 
     // quicksort the subarray from a[lo] to a[hi]
     public static void sort(int[] a, int lo, int hi) { 
-        // To do: try switching to insertion sort if a[lo..hi] is small.
+        // To do: try switching to insertion sort if a[lo..hi] is small
+
         if (hi <= lo) return;
 
-        int j = partition(a, lo, hi);
-        sort(a, lo, j-1);
-        sort(a, j+1, hi);
-        assert isSorted(a, lo, hi);
+        if((hi - lo) < 4){
+            System.out.println("HELLO!!!!!!");
+            Insertion.sort(a, lo, hi);
+            assert isSorted(a, lo, hi);
+        }
+
+        else{
+            int j = partition(a, lo, hi);
+            sort(a, lo, j-1);
+            sort(a, j+1, hi);
+            assert isSorted(a, lo, hi);
+        }
     }
 
     // partition the subarray a[lo..hi] so that a[lo..j-1] <= a[j] <= a[j+1..hi]
@@ -41,7 +50,7 @@ public class Quick {
         // elements of a[lo..hi], and swap that index with a[lo].
 
         /*
-        int mid = (hi  - lo)/2 + lo + 1;
+        int mid = (hi  - lo)/2 + lo;
         int med3 = median3(a, lo, hi, mid);
         exch(a, med3, lo); */
 
