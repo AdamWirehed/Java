@@ -29,8 +29,7 @@ public class Quick {
 
         if (hi <= lo) return;
 
-        if((hi - lo) < 4){
-            System.out.println("HELLO!!!!!!");
+        if((hi - lo) <= 50){
             Insertion.sort(a, lo, hi);
             assert isSorted(a, lo, hi);
         }
@@ -41,6 +40,12 @@ public class Quick {
             sort(a, j+1, hi);
             assert isSorted(a, lo, hi);
         }
+
+
+        int j = partition(a, lo, hi);
+        sort(a, lo, j-1);
+        sort(a, j+1, hi);
+        assert isSorted(a, lo, hi);
     }
 
     // partition the subarray a[lo..hi] so that a[lo..j-1] <= a[j] <= a[j+1..hi]
@@ -49,10 +54,10 @@ public class Quick {
         // To do: find the median of the first, last and middle
         // elements of a[lo..hi], and swap that index with a[lo].
 
-        /*
+
         int mid = (hi  - lo)/2 + lo;
         int med3 = median3(a, lo, hi, mid);
-        exch(a, med3, lo); */
+        exch(a, med3, lo);
 
         int i = lo;
         int j = hi + 1;
