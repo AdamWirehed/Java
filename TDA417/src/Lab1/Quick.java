@@ -24,12 +24,13 @@ public class Quick {
     }
 
     // quicksort the subarray from a[lo] to a[hi]
-    public static void sort(int[] a, int lo, int hi) { 
-        // To do: try switching to insertion sort if a[lo..hi] is small
+    public static void sort(int[] a, int lo, int hi) {
 
         if (hi <= lo) return;
 
-        if((hi - lo) <= 50){
+        // Insertion sort part
+        /*
+        if((hi - lo) <= 4){
             Insertion.sort(a, lo, hi);
             assert isSorted(a, lo, hi);
         }
@@ -39,8 +40,7 @@ public class Quick {
             sort(a, lo, j-1);
             sort(a, j+1, hi);
             assert isSorted(a, lo, hi);
-        }
-
+        } */
 
         int j = partition(a, lo, hi);
         sort(a, lo, j-1);
@@ -54,14 +54,13 @@ public class Quick {
         // To do: find the median of the first, last and middle
         // elements of a[lo..hi], and swap that index with a[lo].
 
-
         int mid = (hi  - lo)/2 + lo;
         int med3 = median3(a, lo, hi, mid);
         exch(a, med3, lo);
 
         int i = lo;
         int j = hi + 1;
-        int v = a[lo];    // pivot?
+        int v = a[lo];    // pivot
 
         // a[lo] is unique largest element
         while (a[++i] < v) {
