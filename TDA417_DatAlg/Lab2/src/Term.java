@@ -6,52 +6,6 @@ public class Term {
     private String query;
     private long weight;
 
-    public static void main(String[] args) {
-        Term test1 = new Term("Simply", 4);
-        Term test2 = new Term("Amazing", 5);
-        Term test3 = new Term("Amen", 2);
-        Term test4 = new Term("Amazingly", 8);
-
-        Term[] arr = {test1, test2, test3, test4};
-
-        System.out.println("Original List:");
-        for(Term Ttmp : arr){
-            System.out.println(Ttmp.toString());
-        }
-        System.out.println();
-
-        byLexOrder LexCmp = new byLexOrder();
-        Arrays.sort(arr, LexCmp);
-
-        System.out.println("List sorted by Lexicographic order:");
-        for(Term Ttmp : arr){
-            System.out.println(Ttmp.toString());
-        }
-        System.out.println();
-
-
-        byRevWOrder RevCmp = new byRevWOrder();
-        Arrays.sort(arr, RevCmp);
-
-        System.out.println("List sorted by Reversed weight:");
-        for(Term Ttmp : arr){
-            System.out.println(Ttmp.toString());
-        }
-        System.out.println();
-
-        byPreOrder PreCmp = new byPreOrder(3);
-        Arrays.sort(arr, PreCmp);
-
-        System.out.println("List sorted by Lexicographic order for the first k chars:");
-        for(Term Ttmp : arr){
-            System.out.println(Ttmp.toString());
-        }
-        System.out.println();
-
-
-
-    }
-
     // Initializes a term with the given query string and weight.
     public Term(String query, long weight){
 
@@ -73,7 +27,7 @@ public class Term {
 
     public static class byLexOrder implements Comparator<Term>{
         public int compare(Term o1, Term o2){
-            return o1.query.compareTo(o2.query);
+            return o1.query.compareTo(o2.query);    // Returns 0 if equal, o1 > o2 => positive num. o2 > o1 => neg. num.
         }
     }
 
