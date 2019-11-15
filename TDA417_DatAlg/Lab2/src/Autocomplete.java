@@ -60,12 +60,13 @@ public class Autocomplete {
         }
 
         int lenStr = prefix.length();
+        System.out.println(lenStr);
         Term.byPreOrder PreCmp = new Term.byPreOrder(lenStr);
         Arrays.sort(this.terms, PreCmp);
 
         int ixF = RangeBinarySearch.firstIndexOf(this.terms, new Term(prefix, 0), PreCmp);
         int ixL = RangeBinarySearch.lastIndexOf(this.terms, new Term(prefix, 0), PreCmp);
 
-        return (ixF - ixL) + 1;
+        return (ixL - ixF) + 1;
     }
 }

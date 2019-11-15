@@ -39,6 +39,7 @@ public class RangeBinarySearch {
                         return mid;
                     }
 
+                    // Could possibly implement a better solution here?
                     else{
                         mid -= 1;
                     }

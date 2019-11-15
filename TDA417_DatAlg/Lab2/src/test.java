@@ -29,6 +29,7 @@ public class test {
 
         Autocomplete Ts = new Autocomplete(arr);
         Term[] acArr = Ts.allMatches("Ama");
+        System.out.println(Ts.numberOfMatches("Ama"));
 
         for(Term Ttmp : acArr){
             System.out.println(Ttmp.toString());

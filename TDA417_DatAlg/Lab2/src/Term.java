@@ -63,10 +63,14 @@ public class Term {
         }
 
         @Override
-        public int compare(Term o1, Term o2){
+        public int compare(Term o1, Term o2) {
 
-            String sub1 = o1.query.substring(0, k);     // Creates substring/slice of query
-            String sub2 = o2.query.substring(0, k);
+            // Scaling slice index to the words
+            int s1 = Math.min(k, o1.query.length());
+            int s2 = Math.min(k, o2.query.length());
+
+            String sub1 = o1.query.substring(0, s1);     // Creates substring/slice of query
+            String sub2 = o2.query.substring(0, s2);
 
             return sub1.compareTo(sub2);
         }
