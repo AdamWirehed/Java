@@ -15,7 +15,7 @@ public class RangeBinarySearch {
 
         while(lo <= hi){
 
-            int mid = (hi - lo)/2;
+            int mid = (hi + lo)/2;
 
             // If key is greater than a[mid] we move lo ->
             if(comparator.compare(a[mid], key) < 0){
@@ -62,7 +62,7 @@ public class RangeBinarySearch {
 
         while(lo <= hi){
 
-            int mid = (hi - lo)/2;
+            int mid = (hi + lo)/2;
 
             // If key is greater than a[mid] we move lo ->
             if(comparator.compare(a[mid], key) < 0){

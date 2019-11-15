@@ -10,9 +10,12 @@ public class test {
         Term test1 = new Term("Simply", 4);
         Term test2 = new Term("Amazing", 5);
         Term test3 = new Term("Amen", 2);
+        Term test5 = new Term("Amen", 2);
+        Term test6 = new Term("Amen", 2);
+        Term test7 = new Term("Amen", 2);
         Term test4 = new Term("Amazingly", 8);
 
-        Term[] arr = {test1, test2, test3, test4};
+        Term[] arr = {test1, test2, test3, test4, test5, test6, test7};
 
         Term.byRevWOrder TestRevCmp = new Term.byRevWOrder();
 
@@ -32,6 +35,10 @@ public class test {
             System.out.println(Ttmp.toString());
         }
         System.out.println();
+        int ixF = RangeBinarySearch.firstIndexOf(arr, new Term("Amen", 0), LexCmp);
+        int ixL = RangeBinarySearch.lastIndexOf(arr, new Term("Amen", 0), LexCmp);
+        System.out.println(ixF);
+        System.out.println(ixL);
 
 
         Term.byRevWOrder RevCmp = new Term.byRevWOrder();
@@ -51,8 +58,6 @@ public class test {
             System.out.println(Ttmp.toString());
         }
         System.out.println();
-
-
 
     }
 }
