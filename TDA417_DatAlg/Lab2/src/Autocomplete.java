@@ -37,6 +37,7 @@ public class Autocomplete {
         if((ixF != -1) || (ixL != -1)){
             Term[] acArr = Arrays.copyOfRange(this.terms, ixF, ixL + 1);
 
+            // Sorting the new array by reversed weight
             Term.byRevWOrder RevCmp = new Term.byRevWOrder();
             Arrays.sort(acArr, RevCmp);
 
@@ -58,6 +59,13 @@ public class Autocomplete {
             throw new IllegalArgumentException();
         }
 
-        return 0;
+        int lenStr = prefix.length();
+        Term.byPreOrder PreCmp = new Term.byPreOrder(lenStr);
+        Arrays.sort(this.terms, PreCmp);
+
+        int ixF = RangeBinarySearch.firstIndexOf(this.terms, new Term(prefix, 0), PreCmp);
+        int ixL = RangeBinarySearch.lastIndexOf(this.terms, new Term(prefix, 0), PreCmp);
+
+        return (ixF - ixL) + 1;
     }
 }

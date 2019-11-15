@@ -2,7 +2,7 @@
 Simple script for testing the classes "Term", "RangeBinarySearch" and "Autocomplete"
  */
 
-import java.util.Arrays;
+import java.util.*;
 
 public class test {
 
@@ -27,6 +27,17 @@ public class test {
         }
         System.out.println();
 
+        Autocomplete Ts = new Autocomplete(arr);
+        Term[] acArr = Ts.allMatches("Ama");
+
+        for(Term Ttmp : acArr){
+            System.out.println(Ttmp.toString());
+        }
+        System.out.println();
+
+
+        // Old tests
+        /*
         Term.byLexOrder LexCmp = new Term.byLexOrder();
         Arrays.sort(arr, LexCmp);
 
@@ -58,6 +69,8 @@ public class test {
             System.out.println(Ttmp.toString());
         }
         System.out.println();
+
+         */
 
     }
 }

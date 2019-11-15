@@ -30,12 +30,12 @@ public class RangeBinarySearch {
             // If a[mid] is equal to key we move as far to the left as possible
             else{
                 // Special case when mid == 0
-                if(mid == 0){
-                    return mid;
-                }
-
                 while(comparator.compare(a[mid], key) == 0) {
-                    if(comparator.compare(a[mid-1], key) < 0){
+                    if(mid == 0){
+                        return mid;
+                    }
+
+                    else if(comparator.compare(a[mid-1], key) < 0){
                         return mid;
                     }
 
@@ -76,12 +76,11 @@ public class RangeBinarySearch {
 
             // If a[mid] is equal to key we move as far to the left as possible
             else{
-                // Special case when mid == 0
-                if(mid == 0){
-                    return mid;
-                }
-
                 while(comparator.compare(a[mid], key) == 0) {
+                    if(mid == a.length - 1){
+                        return mid;
+                    }
+
                     if(comparator.compare(a[mid+1], key) > 0){
                         return mid;
                     }
