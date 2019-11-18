@@ -38,27 +38,41 @@ left of the current mid. We then return the mid value.
  *  and lower-order terms, e.g., m^2 + m log n.
  *****************************************************************************/
 
-constructor:  [...]
+constructor:  [O(N)]
 
-[short explanation]
-
-
-allMatches():   [...]
-
-[short explanation]
+    The constructor in the class Autocomplete takes linear time as it only assigns the array of Terms
+    to its attribute "this.terms". Hence N accesses.
 
 
-numberOfMatches():   [...]
+allMatches():   [O(k*n log n)]
 
-[short explanation]
+    The allMatches method includes an sorting in lexicographic order of the k first characters in the string
+    (k = length of input String). In the worst case, all the Terms in the array you want to sort a long and very
+    similar strings. There you could have to make k comparision for each string compare. It includes a Binary
+    Search which has a logarithmic complexity (log n). At last the method includes a Reverse Weight sorting algorithm
+    on the remaining Terms from the Binary Search.
 
+    Complexity (average):
+    ----------------
+    sortLex:        k*n log n
+    Binary Search:  log n
+    sortRW:         m log m
+
+    Approximative complexity = k*n log n (assuming that m << n)
+
+
+numberOfMatches():   [O(k*n log n)]
+
+    The numberOfMatches method contains the same methods as allMatches except the last sorting algorithm,
+    byReverseWeight. So with the same reasoning as before, the complexity of this method is also k*n log n.
 
 
 /******************************************************************************
  *  Are there any known bugs / limitations?
  *****************************************************************************/
 
-
+Not at the moment that are known. Our code seems to produce the same result as
+the examples given in the assignment.
 
 
 /******************************************************************************
@@ -68,14 +82,20 @@ numberOfMatches():   [...]
  *  may have used in creating your design.
  *****************************************************************************/
 
-
+No collaboration with other students.
+Used the lecture notes for the constructors and binary search as those were
+unfamiliar to us.
 
 
 /******************************************************************************
  *  Describe any serious problems you encountered.                    
  *****************************************************************************/
 
-
+I had to add "<Key>" after Constructor for the methods "firstIndexOf" and
+"lastIndexOf". I don't know if that is ok for this assignment. We don't have
+a lot of experience of Java, so that's maybe why we didn't find any other
+methods that would worked with "Comparator comparator" (gave error on
+comparator.compare(...)) instead of "Comparator<Key> comparator".
 
 
 /******************************************************************************
@@ -84,6 +104,9 @@ numberOfMatches():   [...]
  *  you enjoyed doing it.                                             
  *****************************************************************************/
 
+From our background (TKMAS/TKXXX, currently MPENM), it was a fulfilling assignment
+that easily was applicable to real-life scenarios. We feel that we learned a lot
+from this assignment.
 
 
   

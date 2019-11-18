@@ -44,6 +44,7 @@ public class Autocomplete {
             return acArr;
         }
 
+        // If our Binary Search can't find any Terms equal to the input, it returns a single term
         else{
             Term[] acArr = new Term[1];
             acArr[0] = new Term("No such element in database", 0);
