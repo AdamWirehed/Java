@@ -58,7 +58,7 @@ allMatches():   [O(k*n log n)]
     Binary Search:  log n
     sortRW:         m log m
 
-    Approximative complexity = k*n log n (assuming that m << n)
+    Approx. complexity = k*n log n (assuming that m << n)
 
 
 numberOfMatches():   [O(k*n log n)]
@@ -104,7 +104,7 @@ comparator.compare(...)) instead of "Comparator<Key> comparator".
  *  you enjoyed doing it.                                             
  *****************************************************************************/
 
-From our background (TKMAS/TKXXX, currently MPENM), it was a fulfilling assignment
+From our background (TKMAS/TKARK, currently MPENM), it was a fulfilling assignment
 that easily was applicable to real-life scenarios. We feel that we learned a lot
 from this assignment.
 
