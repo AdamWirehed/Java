@@ -44,27 +44,28 @@ constructor:  [O(N)]
     to its attribute "this.terms". Hence N accesses.
 
 
-allMatches():   [O(k*n log n)]
+allMatches():   [O(n log n)]
 
     The allMatches method includes an sorting in lexicographic order of the k first characters in the string
-    (k = length of input String). In the worst case, all the Terms in the array you want to sort a long and very
-    similar strings. There you could have to make k comparision for each string compare. It includes a Binary
-    Search which has a logarithmic complexity (log n). At last the method includes a Reverse Weight sorting algorithm
-    on the remaining Terms from the Binary Search.
+    (k = length of input String). We assume that the k amount of characters needed to compare in the worst case
+    is a small portion of the whole sorting algorithm. Hence the complexity of the method is linearithmic (n lg n).
+    It also includes a Binary Search which has a logarithmic complexity (log n). At last the method includes a Reverse
+    Weight sorting algorithm on the remaining Terms (m) from the Binary Search. Which also has a linearithmic
+    complexity, but only on the remaining Terms.
 
     Complexity (average):
     ----------------
-    sortLex:        k*n log n
+    sortLex:        n log n
     Binary Search:  log n
     sortRW:         m log m
+    ----------------
+    Approx. complexity = n log n
 
-    Approx. complexity = k*n log n (assuming that m << n)
 
-
-numberOfMatches():   [O(k*n log n)]
+numberOfMatches():   [O(n log n)]
 
     The numberOfMatches method contains the same methods as allMatches except the last sorting algorithm,
-    byReverseWeight. So with the same reasoning as before, the complexity of this method is also k*n log n.
+    byReverseWeight. So with the same reasoning as before, the complexity of this method is also n log n.
 
 
 /******************************************************************************
@@ -104,7 +105,7 @@ comparator.compare(...)) instead of "Comparator<Key> comparator".
  *  you enjoyed doing it.                                             
  *****************************************************************************/
 
-From our background (TKMAS/TKARK, currently MPENM), it was a fulfilling assignment
+From our background (TKMAS/TKATK, currently MPENM), it was a fulfilling assignment
 that easily was applicable to real-life scenarios. We feel that we learned a lot
 from this assignment.
 

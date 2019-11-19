@@ -61,7 +61,6 @@ public class Autocomplete {
         }
 
         int lenStr = prefix.length();
-        System.out.println(lenStr);
         Term.byPreOrder PreCmp = new Term.byPreOrder(lenStr);
         Arrays.sort(this.terms, PreCmp);
 
