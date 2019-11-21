@@ -3,7 +3,7 @@ Task 1: figuring out the complexity
 
 Insertion.java on:
   random inputs: n^2 in worst case, in average it's n(n+1)/2
-  95% sorted inputs: Not linear, but close for small sizes. For larger sizes, it becomes quadratic.
+  95% sorted inputs: Quadratic complexity
   sorted inputs: linear complexity
 
 Quick.java on:
@@ -44,14 +44,33 @@ input data? If so, what is it that changes?
   evenly partitions and creating a linear complexity for sorted arrays. Otherwise it is
   linerarethic.
 
-  Insertion sort for small arrays (cutoff length = 4 and 6): For "small arrays" (sorted and 95%) the insertion sort
-  does make an improvement on random arrays. The performance on sorted and 95% sorted are not changed too much.
+  Insertion sort for small arrays (cutoff length = 60): For smaller arrays, the addition of insertion sort made a big
+  improvement (see values below). The reason behind this is that we remove a lot of partitions in the quicksort
+  algorithm, for sorted and almost sorted arrays, at a point where using insertion sort would be more efficient.
+
+  Here are som benchmark values with and without the use of insertion sort in quicksort.
+
+  Quicksort without insertion sort (and 3 median pivot):
+  =========================================================
+    Size |         Random |     95% sorted |         Sorted
+      10 |       0.000169 |       0.000148 |       0.000142
+      30 |       0.000540 |       0.000522 |       0.000536
+     100 |       0.002229 |       0.002147 |       0.002042
+     300 |       0.008641 |       0.007831 |       0.007472
+
+  Quick sort with insertion sort (and 3 median pivot) at cutoff length = 60
+  =========================================================
+    Size |         Random |     95% sorted |         Sorted
+      10 |       0.000022 |       0.000025 |       0.000020
+      30 |       0.000203 |       0.000055 |       0.000054
+     100 |       0.001552 |       0.000408 |       0.000335
+     300 |       0.003248 |       0.002624 |       0.001498
 
 
 Which combination of improvements gives the best result?
 
-Using Median of 3 pivot alone yields the best results overall as mentioned above. Combining it with shuffling removes
-the advantage of using this method. Since the method takes advantage of having an already
+Using Median of 3 pivot together with insertion sort (cutoff = 60) yields the best results overall. Combining it with
+shuffling removes the advantage of using the median of 3 method. Since the method takes advantage of having an already
 sorted array. So the combination of the two yields the same result as using shuffle alone. Combining "3-pivot" and
-insertion sort yields really bad result for arrays of all sizes.
+insertion sort yields really good results as can be seen in "output.txt".
 
