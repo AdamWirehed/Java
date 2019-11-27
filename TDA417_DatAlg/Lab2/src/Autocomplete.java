@@ -14,6 +14,9 @@ public class Autocomplete {
             throw new IllegalArgumentException();
         }
 
+        Term.byLexOrder LexCmp = new Term.byLexOrder();
+        Arrays.sort(terms, LexCmp);
+
         this.terms = terms;
     }
 
@@ -28,7 +31,6 @@ public class Autocomplete {
         // Sorting in lexicographic order by the lenStr character
         int lenStr = prefix.length();
         Term.byPreOrder PreCmp = new Term.byPreOrder(lenStr);
-        Arrays.sort(this.terms, PreCmp);
 
         int ixF = RangeBinarySearch.firstIndexOf(this.terms, new Term(prefix, 0), PreCmp);
         int ixL = RangeBinarySearch.lastIndexOf(this.terms, new Term(prefix, 0), PreCmp);
@@ -62,10 +64,13 @@ public class Autocomplete {
 
         int lenStr = prefix.length();
         Term.byPreOrder PreCmp = new Term.byPreOrder(lenStr);
-        Arrays.sort(this.terms, PreCmp);
 
         int ixF = RangeBinarySearch.firstIndexOf(this.terms, new Term(prefix, 0), PreCmp);
         int ixL = RangeBinarySearch.lastIndexOf(this.terms, new Term(prefix, 0), PreCmp);
+
+        if((ixF == -1) || (ixL == -1)){
+            return 0;
+        }
 
         return (ixL - ixF) + 1;
     }

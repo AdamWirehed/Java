@@ -9,7 +9,6 @@ public class RangeBinarySearch {
         if((a == null) || (key == null) || (comparator == null)){
             throw new NullPointerException();
         }
-
         int lo = 0;
         int hi = a.length - 1;
 
@@ -27,26 +26,23 @@ public class RangeBinarySearch {
                 hi = mid - 1;
             }
 
-            // If a[mid] is equal to key we move as far to the left as possible
+            // If a[mid] is equal to key we check if left element of mid is lower than a[mid]
             else{
                 // Special case when mid == 0
-                while(comparator.compare(a[mid], key) == 0) {
                     if(mid == 0){
                         return mid;
                     }
 
-                    else if(comparator.compare(a[mid-1], key) < 0){
+                    else if(comparator.compare(a[mid - 1], key) < 0){
                         return mid;
                     }
 
-                    // Could possibly implement a better solution here?
+                    // Return to binary search with new hi -> yields new mid
                     else{
-                        mid -= 1;
+                        hi = mid - 1;
                     }
                 }   // End while-loop a[mid] == key
-            }
         } // End while-loop lo <= hi
-
         return -1;  // If no element in a is equal to key
     }
 
@@ -75,22 +71,22 @@ public class RangeBinarySearch {
                 hi = mid - 1;
             }
 
-            // If a[mid] is equal to key we move as far to the left as possible
+            // If a[mid] is equal to key we check if left element of mid is lower than a[mid]
             else{
-                while(comparator.compare(a[mid], key) == 0) {
-                    if(mid == a.length - 1){
-                        return mid;
-                    }
+                // Special case when mid is at the end of the matrix
+                if(mid == a.length - 1){
+                    return mid;
+                }
 
-                    if(comparator.compare(a[mid+1], key) > 0){
-                        return mid;
-                    }
+                else if(comparator.compare(a[mid + 1], key) > 0){
+                    return mid;
+                }
 
-                    else{
-                        mid += 1;
-                    }
-                }   // End while-loop a[mid] == key
-            }
+                // Return to binary search with new lo -> yields new mid
+                else{
+                    lo = mid + 1;
+                }
+            }   // End while-loop a[mid] == key
         } // End while-loop lo <= hi
 
         return -1;  // If no element in a is equal to key

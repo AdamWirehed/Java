@@ -12,8 +12,8 @@ Group member B:    [Adnan Fazlinovic]
  *  How many hours did you spend on the assignment?
  *****************************************************************************/
 
-Group member A:    [15 hours]
-Group member B:    [10 hours]
+Group member A:    [20 hours]
+Group member B:    [15 hours]
 
 
 /******************************************************************************
@@ -38,10 +38,10 @@ left of the current mid. We then return the mid value.
  *  and lower-order terms, e.g., m^2 + m log n.
  *****************************************************************************/
 
-constructor:  [O(N)]
+constructor:  [O(n log n)]
 
-    The constructor in the class Autocomplete takes linear time as it only assigns the array of Terms
-    to its attribute "this.terms". Hence N accesses.
+    The constructor in the class Autocomplete takes linearithmic time as we sort the n long array by lexicographic
+    order
 
 
 allMatches():   [O(n log n)]

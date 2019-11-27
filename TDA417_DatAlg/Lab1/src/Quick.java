@@ -28,7 +28,6 @@ public class Quick {
         if (hi <= lo) return;
 
         // Insertion sort part
-
         if((hi - lo) <= 60){
             Insertion.sort(a, lo, hi);
             assert isSorted(a, lo, hi);

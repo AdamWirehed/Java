@@ -28,8 +28,8 @@ public class test {
         System.out.println();
 
         Autocomplete Ts = new Autocomplete(arr);
-        Term[] acArr = Ts.allMatches("Ama");
-        System.out.println(Ts.numberOfMatches("Ama"));
+        Term[] acArr = Ts.allMatches("Am");
+        System.out.println(Ts.numberOfMatches("Am"));
 
         for(Term Ttmp : acArr){
             System.out.println(Ttmp.toString());
