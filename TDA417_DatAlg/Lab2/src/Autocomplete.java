@@ -68,6 +68,7 @@ public class Autocomplete {
         int ixF = RangeBinarySearch.firstIndexOf(this.terms, new Term(prefix, 0), PreCmp);
         int ixL = RangeBinarySearch.lastIndexOf(this.terms, new Term(prefix, 0), PreCmp);
 
+        // Special case for when prefix does not have any matches
         if((ixF == -1) || (ixL == -1)){
             return 0;
         }

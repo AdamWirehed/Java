@@ -44,28 +44,24 @@ constructor:  [O(n log n)]
     order
 
 
-allMatches():   [O(n log n)]
+allMatches():   [O(log n)]
 
-    The allMatches method includes an sorting in lexicographic order of the k first characters in the string
-    (k = length of input String). We assume that the k amount of characters needed to compare in the worst case
-    is a small portion of the whole sorting algorithm. Hence the complexity of the method is linearithmic (n lg n).
-    It also includes a Binary Search which has a logarithmic complexity (log n). At last the method includes a Reverse
+    The method includes a Binary Search which has a logarithmic complexity (log n). At last the method includes a Reverse
     Weight sorting algorithm on the remaining Terms (m) from the Binary Search. Which also has a linearithmic
     complexity, but only on the remaining Terms.
 
     Complexity (average):
     ----------------
-    sortLex:        n log n
     Binary Search:  log n
     sortRW:         m log m
     ----------------
-    Approx. complexity = n log n
+    Approx. complexity = log n (assuming that m << n)
 
 
-numberOfMatches():   [O(n log n)]
+numberOfMatches():   [O(log n)]
 
     The numberOfMatches method contains the same methods as allMatches except the last sorting algorithm,
-    byReverseWeight. So with the same reasoning as before, the complexity of this method is also n log n.
+    byReverseWeight. So with the same reasoning as before, the complexity of this method is also log m.
 
 
 /******************************************************************************
@@ -92,7 +88,7 @@ unfamiliar to us.
  *  Describe any serious problems you encountered.                    
  *****************************************************************************/
 
-I had to add "<Key>" after Constructor for the methods "firstIndexOf" and
+We had to add "<Key>" after Constructor for the methods "firstIndexOf" and
 "lastIndexOf". I don't know if that is ok for this assignment. We don't have
 a lot of experience of Java, so that's maybe why we didn't find any other
 methods that would worked with "Comparator comparator" (gave error on
