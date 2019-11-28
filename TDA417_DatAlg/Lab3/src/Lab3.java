@@ -1,3 +1,4 @@
+import javax.sound.midi.SysexMessage;
 import java.util.stream.Stream;
 import java.nio.file.*;
 import java.io.*;
@@ -81,6 +82,41 @@ public class Lab3 {
     static BST<Ngram, ArrayList<Path>> buildIndex(BST<Path, Ngram[]> files) {
         BST<Ngram, ArrayList<Path>> index = new BST<>();
         // TO DO: build index of n-grams
+
+        // Creates an iterable of paths
+        Iterable<Path> filePaths = files.keys();
+
+        // loops through each path (file) and accesses every 5-gram for that file
+        for(Path filePath : filePaths){
+            Ngram[] fiveGs = files.get(filePath);
+
+            for(Ngram fiveG : fiveGs){
+                // If the 5gram already exist in the tree, we copy the current list and add the new path file to it
+                if(index.contains(fiveG)){
+                    ArrayList<Path> tmpPathArr = index.get(fiveG);
+                    tmpPathArr.add(filePath);
+                    index.put(fiveG, tmpPathArr);
+                }
+                // If it doesn't exist we just add a new node with the file path to the BST
+                else{
+                    ArrayList<Path> tmpPathArr = new ArrayList<>();
+                    tmpPathArr.add(filePath);
+                    index.put(fiveG, tmpPathArr);
+                }
+            }
+        }
+
+        /*
+        // Simple testing for my own sake
+        Iterable<Ngram> ngKeys = index.keys();
+        for(Ngram ngKey : ngKeys){
+            for(Path p : index.get(ngKey)){
+                System.out.println(p);
+            }
+            System.out.println(ngKey);
+            System.out.println();
+        }*/
+
         return index;
     }
 
@@ -90,6 +126,8 @@ public class Lab3 {
         // N.B. Path is Java's class for representing filenames
         // PathPair represents a pair of Paths (see PathPair.java)
         BST<PathPair, Integer> similarity = new BST<>();
+
+        /*
         for (Path path1: files.keys()) {
             for (Path path2: files.keys()) {
                 if (path1.equals(path2)) continue;
@@ -106,7 +144,37 @@ public class Lab3 {
                     }
                 }
             }
+        }*/
+
+        // For PathPair pair (path1, path2) is the same as (path2, path1)
+        // Building index based on paths and 5grams given by "files"
+
+        for(Ngram fiveG : index.keys()){
+            ArrayList<Path> pFiles = index.get(fiveG);
+            if(pFiles.size() != 1){
+                for(int ixF = 0; ixF < pFiles.size(); ixF++){
+                    for(int ixL = 0; ixL < pFiles.size(); ixL++){
+                        Path path1 = pFiles.get(ixF);
+                        Path path2 = pFiles.get(ixL);
+                        // Plagiarism on your own essay sounds like a lot of fun
+                        if(path1 != path2) {
+                            PathPair pair = new PathPair(pFiles.get(ixF), pFiles.get(ixL));
+
+                            if (!similarity.contains(pair)) {
+                                similarity.put(pair, 0);
+                            }
+                            similarity.put(pair, similarity.get(pair) + 1);
+                        }
+                    }
+                }
+            }
         }
+
+        /*
+        for(PathPair pp : similarity.keys()){
+            System.out.println(similarity.get(pp));
+            System.out.println(pp);
+        }*/
 
         return similarity;
     }
