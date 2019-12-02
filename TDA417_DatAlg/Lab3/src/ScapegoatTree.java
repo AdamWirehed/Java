@@ -135,7 +135,7 @@ public class ScapegoatTree<Key extends Comparable<Key>, Value> {
         node.height = 1 + Math.max(height(node.left), height(node.right));
 
         if(node.height > alpha*log2(node.size)){
-            rebuild(node);
+            node = rebuild(node);
         }
 
         return node;
