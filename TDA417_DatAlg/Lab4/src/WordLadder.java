@@ -1,8 +1,5 @@
 
-import java.util.List;
-import java.util.LinkedList;
-import java.util.Set;
-import java.util.HashSet;
+import java.util.*;
 
 import java.util.stream.Collectors;
 
@@ -66,7 +63,30 @@ public class WordLadder implements DirectedGraph<String> {
         /********************
          * TODO: Task 2
          ********************/
-        return new LinkedList<>();
+        //LinkedList<String> connections = new LinkedList<>();  // Linked list representing edges
+        List<DirectedEdge<String>> connections = new LinkedList<>();
+
+        int Ix = 0;
+        while(Ix < word.length()){
+            char[] cpArr = word.toCharArray();    // Make a copy of the original array
+            System.out.println(Ix);
+            for(char tmpC : charset) {
+                // Unnecessary to check with the same letter as the original
+                if (cpArr[Ix] != tmpC) {
+                    cpArr[Ix] = tmpC;    // Replace the current letter with one from the charset
+                    String newWord = new String(cpArr);
+                    System.out.println(newWord);
+
+                    if (dictionary.contains(newWord)) {
+                        DirectedEdge<String> edge = new DirectedEdge<String>(word, newWord, 1.0);
+                        connections.add(edge);
+                    }
+                }
+            }
+            Ix++;
+        }
+
+        return connections;
     }
 
 

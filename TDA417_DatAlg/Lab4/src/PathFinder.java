@@ -93,9 +93,6 @@ public class PathFinder<V> {
 
     public Result<V> searchDijkstra(V start, V goal) {
         int visitedNodes = 0;
-        /********************
-         * TODO: Task 1 
-         ********************/
 
         HashMap<V, Double> distTo = new HashMap<>();                // distTo[v] = distance of shortest s->v path
         HashMap<V, DirectedEdge<V>> edgeTo = new HashMap<>();          // edgeTo[v] = last edge on shortest s->v path
