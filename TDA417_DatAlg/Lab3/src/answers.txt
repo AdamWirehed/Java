@@ -6,29 +6,43 @@ Answer in terms of N, the total number of 5-grams in the input files.
 Assume that the number of 5-grams that occur in more than one file is a small
 constant - that is, there is not much plagiarised text.
 
-A:
+A: We assume that the number of files is D and the number of 5-grams per document is K (DK = N).
+    We have four loops in total, the two first loops over the documents and the next two is over the 5-grams in those
+    documents. More concrete: the first for-loop loops over all files, while the second loops over the remaining files,
+    comparing their 5-grams. The third for-loop checks the first 5-gram of the file being compared to the others with
+    their respective 5-grams. This yields the complexity D*D*K*K = N^2 -> quadratic complexity
 
 Q: How long did the program take on the 'small' and 'medium' directories?
 Is the ratio between the times what you would expect, given the complexity?
 Explain very briefly why.
 
-A:
+A: Times:
+    Small:  2.34 s
+    Medium: 940.93 s
+
+    The time difference is a bit more than we expected. Around 4 times slower than we expected. In this analysis we
+    assume that the amount of plagiarised text is constant. This could imply that the medium set has more plagiarised
+    text than the small set. We calculated the order of growth of this method to be N^2.627 instead (where the constant
+    before is a = 1.115*10^(-11)).
 
 Q: How long do you predict the program would take to run on the 'huge'
 directory?
 
-A:
+A:  With the new order of growth we calculated, we estimated that the huge directory would take:
+    2 459 725 s or around 28.5 days to run.
 
 Using binary search trees
 -------------------------
 
 Q: Which of the trees usually become unbalanced?
 
-A:
+A:  For us it was the files tree that became unbalanced. The value of height and size were only different by 1. So it
+    was as unbalanced as it could be.
 
 Q (optional): Is there a simple way to stop these trees becoming unbalanced?
 
-A (optional): 
+A (optional): We could implement Red-Black BST, since it's invariance makes the tree perfectly balanced. How ever, we
+              are not sure if this implementation is "simple" or appropriate for this kind of data.
 
 Using scapegoat trees
 ---------------------
@@ -38,11 +52,24 @@ Again, assume a total of N 5-grams, and a constant number of 5-grams that
 occur in more than one file.
 
 A:
+    buildIndex: Creating a empty ScapegoatTree takes constant time. After that we loop through every file and insert
+    those file paths to the corresponding 5-gram node. It was given to us that adding N 5-grams to an empty
+    ScapegoatTree would take N lg N time. Since the amount of 5-grams that occur more than once in the document set is
+    few, the list that contains the file-paths are relatively small and we can ignore the complexity for the task to
+    copy and add paths to the ArrayList.
+
+    findSimilarity: Here we loop through all the unique 5-grams (N amount) in the Scapegoat tree. And since the
+    ArrayList in these nodes are relatively small, we can assume that the two loops for the ArrayList that creates the
+    file-paths takes constant time. Hence the method have complexity N.
+
+    In summary these two methods have complexity N lg N and N respectively. Therefor the total complexity of these two
+    methods are N lg N, since we only consider the leading term.
+
 
 Q (optional): What if the total similarity score is an arbitrary number S,
 rather than a small constant?
 
-A (optional):
+A (optional):   We can't really find a good answer for this, but we would like to hear a motivation for it.
 
 Q (optional): Did you find any text that was clearly copied?
 
