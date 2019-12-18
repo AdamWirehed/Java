@@ -69,13 +69,11 @@ public class WordLadder implements DirectedGraph<String> {
         int Ix = 0;
         while(Ix < word.length()){
             char[] cpArr = word.toCharArray();    // Make a copy of the original array
-            System.out.println(Ix);
             for(char tmpC : charset) {
                 // Unnecessary to check with the same letter as the original
                 if (cpArr[Ix] != tmpC) {
                     cpArr[Ix] = tmpC;    // Replace the current letter with one from the charset
                     String newWord = new String(cpArr);
-                    System.out.println(newWord);
 
                     if (dictionary.contains(newWord)) {
                         DirectedEdge<String> edge = new DirectedEdge<String>(word, newWord, 1.0);
