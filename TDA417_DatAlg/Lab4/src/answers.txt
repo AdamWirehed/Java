@@ -5,17 +5,17 @@
  *  Lab 4: Path finder
  ******************************************************************************/
 
-Name of lab group: [...]
-Group member A:    [...]
-Group member B:    [...]
+Name of lab group: [Project group 39]
+Group member A:    [Adnan Fazlinovic]
+Group member B:    [Adam Wirehed]
 
 
 /******************************************************************************
  *  How many hours did you spend on the assignment?
  *****************************************************************************/
 
-Group member A:    [...]
-Group member B:    [...]
+Group member A:    [15 h]
+Group member B:    [18 h]
 
 
 /******************************************************************************
@@ -25,45 +25,59 @@ Group member B:    [...]
 
 $ java RunPathFinder dijkstra AdjacencyGraph graphs/AdjacencyGraph/citygraph-EU.txt "Volos, Greece" "Oulu, Finland"
 
-visited nodes: [...]
-minimal cost:  [...]
-shortest path: [...]
+visited nodes: [961]
+minimal cost:  [3488.0]
+shortest path: [Volos, Greece -> Timişoara, Romania -> Arad,
+ Romania -> Oradea, Romania -> Debrecen, Hungary -> Nyíregyháza,
+  Hungary -> Uzhgorod, Ukraine -> Rzeszów, Poland -> Lublin,
+   Poland -> Białystok, Poland -> Tallinn, Estonia -> Helsinki, Finland -> Oulu, Finland]
 
 $ java RunPathFinder astar AdjacencyGraph graphs/AdjacencyGraph/citygraph-EU.txt "Volos, Greece" "Oulu, Finland"
 
-visited nodes: [...]
-minimal cost:  [...]
-shortest path: [...]
+visited nodes: [961]
+minimal cost:  [3488.0]
+shortest path: [Volos, Greece -> Timişoara, Romania -> Arad, Romania -> Oradea, Romania -> Debrecen, Hungary
+ -> Nyíregyháza, Hungary -> Uzhgorod, Ukraine -> Rzeszów, Poland -> Lublin, Poland -> Białystok, Poland ->
+  Tallinn, Estonia -> Helsinki, Finland -> Oulu, Finland]
 
 $ java RunPathFinder dijkstra NPuzzle 3 "/HFG/BED/C_A/" "/ABC/DEF/GH_/"
 
-visited nodes: [...]
-minimal cost:  [...]
-shortest path: [...]
+visited nodes: [181440]
+minimal cost:  [31.0]
+shortest path: [/HFG/BED/C_A/ -> /HFG/BED/CA_/ -> /HFG/BE_/CAD/ -> /HF_/BEG/CAD/ -> /H_F/BEG/CAD/
+ -> /_HF/BEG/CAD/ -> /BHF/_EG/CAD/ -> /BHF/CEG/_AD/ -> /BHF/CEG/A_D/ -> /BHF/CEG/AD_/ -> /BHF/CE_/ADG/ ->
+ /BHF/C_E/ADG/ -> /BHF/_CE/ADG/ -> /BHF/ACE/_DG/ -> /BHF/ACE/D_G/ -> /BHF/ACE/DG_/ -> /BHF/AC_/DGE/ -> /BHF/A_C/DGE/
+  -> /B_F/AHC/DGE/ -> /BF_/AHC/DGE/ -> /BFC/AH_/DGE/ -> /BFC/A_H/DGE/ -> /B_C/AFH/DGE/ -> /_BC/AFH/DGE/ ->
+  /ABC/_FH/DGE/ -> /ABC/DFH/_GE/ -> /ABC/DFH/G_E/ -> /ABC/DFH/GE_/ -> /ABC/DF_/GEH/ -> /ABC/D_F/GEH/ -> /ABC/DEF/G_H/
+   -> /ABC/DEF/GH_/]
 
 $ java RunPathFinder astar NPuzzle 3 "/HFG/BED/C_A/" "/ABC/DEF/GH_/"
 
-visited nodes: [...]
-minimal cost:  [...]
-shortest path: [...]
+visited nodes: [15860]
+minimal cost:  [31.0]
+shortest path: [/HFG/BED/C_A/ -> /HFG/BED/_CA/ -> /HFG/_ED/BCA/ -> /HFG/E_D/BCA/ -> /H_G/EFD/BCA/ -> /HG_/EFD/BCA/ ->
+ /HGD/EF_/BCA/ -> /HGD/EFA/BC_/ -> /HGD/EFA/B_C/ -> /HGD/E_A/BFC/ -> /H_D/EGA/BFC/ -> /HD_/EGA/BFC/ -> /HDA/EG_/BFC/ ->
+  /HDA/EGC/BF_/ -> /HDA/EGC/B_F/ -> /HDA/E_C/BGF/ -> /HDA/_EC/BGF/ -> /_DA/HEC/BGF/ -> /D_A/HEC/BGF/ -> /DA_/HEC/BGF/
+  -> /DAC/HE_/BGF/ -> /DAC/H_E/BGF/ -> /DAC/_HE/BGF/ -> /DAC/BHE/_GF/ -> /DAC/BHE/G_F/ -> /DAC/B_E/GHF/ ->
+  /DAC/_BE/GHF/ -> /_AC/DBE/GHF/ -> /A_C/DBE/GHF/ -> /ABC/D_E/GHF/ -> /ABC/DE_/GHF/ -> /ABC/DEF/GH_/]
 
 $ java RunPathFinder dijkstra NPuzzle 3 "/HGF/BED/C_A/" "/ABC/DEF/GH_/"
 
-visited nodes: [...]
-minimal cost:  [...]
-shortest path: [...]
+visited nodes: [181440]
+minimal cost:  [-]
+shortest path: [No path found]
 
 $ java RunPathFinder astar NPuzzle 3 "/HGF/BED/C_A/" "/ABC/DEF/GH_/"
 
-visited nodes: [...]
-minimal cost:  [...]
-shortest path: [...]
+visited nodes: [181440]
+minimal cost:  [-]
+shortest path: [No path found]
 
 $ java RunPathFinder dijkstra GridGraph graphs/GridGraph/AR0011SR.map "23:161" "130:211"
 
-visited nodes: [...]
-minimal cost:  [...]
-shortest path: [...]
+visited nodes: [20813]
+minimal cost:  [366.40411229460744]
+shortest path: [really?]
 
 $ java RunPathFinder astar GridGraph graphs/GridGraph/AR0011SR.map "23:161" "130:211"
 
@@ -73,9 +87,10 @@ shortest path: [...]
 
 $ java RunPathFinder dijkstra WordLadder graphs/WordLadder/words-saldo.txt syster broder
 
-visited nodes: [...]
-minimal cost:  [...]
-shortest path: [...]
+visited nodes: [13626]
+minimal cost:  [11.0]
+shortest path: [syster -> byster -> bysten -> basten -> basken -> banken -> banden -> bauden
+ -> bruden -> bröden -> bröder -> broder]
 
 $ java RunPathFinder astar WordLadder graphs/WordLadder/words-saldo.txt syster broder
 
@@ -100,8 +115,16 @@ shortest path: [...]
 
 // WordLadder.outgoingEdges(String word)
 
-[...]
+    ix = 0
+    while (char index in word < word.length)
+        cpWord = copy of original word.toArray
+        for (each char 'c' in charset)
+            cpWord[ix] = c
+            newWord = cpWord.toString
+            if (dictionary contains newWord)
+                add edge between original word and newWord in linkedList
 
+       ix++
 
 // WordLadder.guessCost(String v, String w)
 
@@ -120,7 +143,24 @@ shortest path: [...]
 
 // PathFinder.searchDijkstra(V start, V goal)
 
-[...]
+* Define and create priority queue and HashMaps *
+
+Add start node with weight 0.0 to pq (pq uses weight from distTo as comparator)
+
+while pq is not empty
+    remove min node 'v'
+    if this node, v, has not been visited yet, add it to the visited list and increase visitedNodes
+
+    If this node is the goal, calculate the shortest path and return it
+
+    Else: loop through edges to adjacent nodes
+        If adjacent nodes is not in distTo, add them with weight pos. infinity
+
+        Calculate the distance from node from start to v to the adjacent node w
+        If this distance is shorter than the currently know distance to that node,
+        add this new shorter distance to distTo, the new edge from v to w in edgeTo
+        and the node w to the pq
+
 
 
 /******************************************************************************
@@ -128,14 +168,17 @@ shortest path: [...]
  *  of .searchAstar() and .searchDijkstra()?
  *****************************************************************************/
 
-[...]
+That we have a new comparator in the priority queue. We have a new HashMap that is called
+ 'guessTo' which is 'distTo' + guessCost(approx. distance from current node to goal) (heuristic).
+ So instead of sorting the pq with respect to the currently known distance, we sort it by the
+ guessed distance from the goal as well. Otherwise the code is pretty much the same.
 
 
 /******************************************************************************
  *  Are there any known bugs / limitations?
  *****************************************************************************/
 
-
+Not that we are aware of.
 
 
 /******************************************************************************
@@ -145,7 +188,7 @@ shortest path: [...]
  *  may have used in creating your design.
  *****************************************************************************/
 
-
+No.
 
 
 /******************************************************************************
@@ -161,6 +204,7 @@ shortest path: [...]
  *  you enjoyed doing it.                                             
  *****************************************************************************/
 
-
+The 'Tip of the day' on the Djikstra implementation was really helpful. Maybe too
+ helpful. A variant of that psudocode could be part of the assignment description next year.
 
   
