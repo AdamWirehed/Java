@@ -5,7 +5,7 @@
  *  Lab 4: Path finder
  ******************************************************************************/
 
-Name of lab group: [Project group 39]
+Name of lab group: [Group 39]
 Group member A:    [Adnan Fazlinovic]
 Group member B:    [Adam Wirehed]
 
@@ -81,9 +81,11 @@ shortest path: [really?]
 
 $ java RunPathFinder astar GridGraph graphs/GridGraph/AR0011SR.map "23:161" "130:211"
 
-visited nodes: [...]
-minimal cost:  [...]
-shortest path: [...]
+visited nodes: [12761]
+minimal cost:  [366.40411229460744]
+shortest path: [23:161 -> 23:160 -> 23:159 ->
+ 23:158 -> 23:157 -> 23:156 -> 23:155 -> ... (a really long list) ...
+ -> 132:207 -> 131:208 -> 131:209 -> 131:210 -> 130:211]
 
 $ java RunPathFinder dijkstra WordLadder graphs/WordLadder/words-saldo.txt syster broder
 
@@ -94,9 +96,10 @@ shortest path: [syster -> byster -> bysten -> basten -> basken -> banken -> band
 
 $ java RunPathFinder astar WordLadder graphs/WordLadder/words-saldo.txt syster broder
 
-visited nodes: [...]
-minimal cost:  [...]
-shortest path: [...]
+visited nodes: [1961]
+minimal cost:  [11.0]
+shortest path: [syster -> sylter -> salter -> balter -> balder -> barder -> barden -> bauden
+ -> bruden -> bräden -> bräder -> broder]
 
 
 /******************************************************************************
@@ -106,7 +109,16 @@ shortest path: [...]
  *  Why do you think this is the case?
  *****************************************************************************/
 
-[...]
+By our measurements the heuristic guessCost had the most inpact on the Npuzzle, and the least on GridGraph.
+
+For the Npuzzle the heuristic calculates, for each tile, the amount of tiles in vertical and horizontal axis that this
+said tile differs from the goal. So in the next move makes the current placements closer to the goal, it will be placed
+"higher" up in the priority queue. So we will choose the next move to be the one where the majority of the tiles will
+be closer to the goal placement.
+
+The reason of drastic improvement on WordLadder is that we choose the 'next' word in the LinkedList that has the most
+resemblance to the goal (most amount of same chars at the same index). If the newWord has a lot of char's that are in
+ the same position as the goal word, it will get 'higher' up in the pq.
 
 
 /******************************************************************************
@@ -123,18 +135,28 @@ shortest path: [...]
             newWord = cpWord.toString
             if (dictionary contains newWord)
                 add edge between original word and newWord in linkedList
-
        ix++
 
 // WordLadder.guessCost(String v, String w)
 
-[...]
+[Number of characters to be compared in the strings is the same]
+Initialize difference variable
+For each character in the strings at position i
+	if the characters are not the same
+		increment difference variable by one
+	else continue to next character
+
+Return difference variable
 
 
 // GridGraph.guessCost(String v, String w)
 
-[...]
-
+[Arguments should be (Coord start, Coord end)]
+    Compute x-distance from start coordinate to end coordinate
+    Compute y-distance from start coordinate to end coordinate
+    Compute distance using Pythagoras theorem
+    Distance = square root of (x-distance ^ 2 + y-distance ^2)
+    Return distance
 
 
 /******************************************************************************

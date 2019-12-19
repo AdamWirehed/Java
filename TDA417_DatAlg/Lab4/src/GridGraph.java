@@ -101,10 +101,10 @@ public class GridGraph implements DirectedGraph<GridGraph.Coord> {
 
 
     public double guessCost(Coord start, Coord end) {
-        /********************
-         * TODO: Task 4
-         ********************/
-        return 0;
+        double distx = end.x - start.x;
+        double disty = end.y - start.y;
+        double dist = Math.sqrt(Math.pow(distx,2) + Math.pow(disty,2));
+        return dist;
     }
 
 
