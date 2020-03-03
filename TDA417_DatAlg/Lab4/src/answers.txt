@@ -184,7 +184,6 @@ while pq is not empty
         and the node w to the pq
 
 
-
 /******************************************************************************
  *  What are the main differences between your implementations 
  *  of .searchAstar() and .searchDijkstra()?
