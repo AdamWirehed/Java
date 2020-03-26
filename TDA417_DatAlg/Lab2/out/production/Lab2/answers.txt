@@ -1,0 +1,113 @@
+/******************************************************************************
+ *  DAT038, TDA417  Datastrukturer och algoritmer, LP2 2019
+ *  Lab 2: Autocomplete
+ ******************************************************************************/
+
+Name of lab group: [Lab 1 Groups 39]
+Group member A:    [Adam Wirehed]
+Group member B:    [Adnan Fazlinovic]
+
+
+/******************************************************************************
+ *  How many hours did you spend on the assignment?
+ *****************************************************************************/
+
+Group member A:    [15 hours]
+Group member B:    [10 hours]
+
+
+/******************************************************************************
+ *  Describe how your firstIndexOf() method in RangeBinarySearch.java
+ *  finds the first index of a key that equals the search key.
+ *****************************************************************************/
+
+It works like a normal Binary Search at first. Defines variables lo, hi and mid.
+If the a[mid] value is higher than the key, we move hi to mid - 1 and vice
+versa when a[mid] is lower. When a[mid] is equal to the key, we move in the "left"
+(descending) direction until we find another value (not equal to the key) to the
+left of the current mid. We then return the mid value.
+
+
+/******************************************************************************
+ *  What is the worst case time complexity in the number of compares
+ *  that each of the operations in the Autocomplete data type make,
+ *  as a function of the number of terms n and the number of matching terms m?
+ *
+ *  You can answer in O() notation, or in order-of-growth notation.
+ *  Recall that in both notations you should discard leading coefficients
+ *  and lower-order terms, e.g., m^2 + m log n.
+ *****************************************************************************/
+
+constructor:  [O(N)]
+
+    The constructor in the class Autocomplete takes linear time as it only assigns the array of Terms
+    to its attribute "this.terms". Hence N accesses.
+
+
+allMatches():   [O(n log n)]
+
+    The allMatches method includes an sorting in lexicographic order of the k first characters in the string
+    (k = length of input String). We assume that the k amount of characters needed to compare in the worst case
+    is a small portion of the whole sorting algorithm. Hence the complexity of the method is linearithmic (n lg n).
+    It also includes a Binary Search which has a logarithmic complexity (log n). At last the method includes a Reverse
+    Weight sorting algorithm on the remaining Terms (m) from the Binary Search. Which also has a linearithmic
+    complexity, but only on the remaining Terms.
+
+    Complexity (average):
+    ----------------
+    sortLex:        n log n
+    Binary Search:  log n
+    sortRW:         m log m
+    ----------------
+    Approx. complexity = n log n
+
+
+numberOfMatches():   [O(n log n)]
+
+    The numberOfMatches method contains the same methods as allMatches except the last sorting algorithm,
+    byReverseWeight. So with the same reasoning as before, the complexity of this method is also n log n.
+
+
+/******************************************************************************
+ *  Are there any known bugs / limitations?
+ *****************************************************************************/
+
+Not at the moment that are known. Our code seems to produce the same result as
+the examples given in the assignment.
+
+
+/******************************************************************************
+ *  Did you collaborate with any other students on this lab?
+ *  If so, please write in what way you collaborated and with whom.
+ *  Also include any resources (including the web) that you may
+ *  may have used in creating your design.
+ *****************************************************************************/
+
+No collaboration with other students.
+Used the lecture notes for the constructors and binary search as those were
+unfamiliar to us.
+
+
+/******************************************************************************
+ *  Describe any serious problems you encountered.                    
+ *****************************************************************************/
+
+I had to add "<Key>" after Constructor for the methods "firstIndexOf" and
+"lastIndexOf". I don't know if that is ok for this assignment. We don't have
+a lot of experience of Java, so that's maybe why we didn't find any other
+methods that would worked with "Comparator comparator" (gave error on
+comparator.compare(...)) instead of "Comparator<Key> comparator".
+
+
+/******************************************************************************
+ *  List any other comments here. Feel free to provide any feedback   
+ *  on how much you learned from doing the assignment, and whether    
+ *  you enjoyed doing it.                                             
+ *****************************************************************************/
+
+From our background (TKMAS/TKATK, currently MPENM), it was a fulfilling assignment
+that easily was applicable to real-life scenarios. We feel that we learned a lot
+from this assignment.
+
+
+  
